@@ -22,8 +22,8 @@ public class Food {
     @Getter
     private Integer foodId;
 
-    @JsonProperty("food_name")
-    @Column(name = "food_name")
+    @JsonProperty("name")
+    @Column(name = "name")
     @Setter
     @Getter
     private String foodName;
