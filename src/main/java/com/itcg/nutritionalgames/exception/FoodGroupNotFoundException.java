@@ -12,11 +12,11 @@ public class FoodGroupNotFoundException extends RuntimeException {
     }
 
     public FoodGroupNotFoundException(Integer recommendedCaloriesId) {
-        super("No Recommended Calories has been found with the recommended_calories_id = " + recommendedCaloriesId);
+        super("No Food Group has been found with the group_id = " + recommendedCaloriesId);
     }
 
     public FoodGroupNotFoundException() {
-        super("No Recommended Calories has been found");
+        super("No Food Group has been found");
     }
 
 }

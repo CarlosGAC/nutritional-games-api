@@ -20,7 +20,7 @@ public class RecommendedCaloriesController {
 
     private final RecommendedCaloriesService recommendedCaloriesService;
 
-    @GetMapping(value="/v1/recommended_calories")
+    @GetMapping(value="/v1/recommended_Calories")
     public List<RecommendedCalories> getAllRecommendedCalories(){
 
         List<RecommendedCalories> response = recommendedCaloriesService.findAllRecommendedCalories();
@@ -33,7 +33,7 @@ public class RecommendedCaloriesController {
 
     }
 
-    @GetMapping(value="/v1/recommended_calories/{recommended_calories_id}")
+    @GetMapping(value="/v1/recommendedCalories/{recommended_calories_id}")
     public RecommendedCalories getRecommendedCaloriesById(@PathVariable(name = "recommended_calories_id") Integer recommendedCaloriesId) {
 
         RecommendedCalories foundRecommendedCalories = recommendedCaloriesService.findRecommendedCaloriesById(recommendedCaloriesId)
@@ -42,7 +42,7 @@ public class RecommendedCaloriesController {
         return foundRecommendedCalories;
     }
 
-    @PostMapping(value="/v1/recommended_calories")
+    @PostMapping(value="/v1/recommendedCalories")
     public RecommendedCalories saveRecommendedCalories(@RequestBody RecommendedCalories recommendedCalories) {
 
         if(recommendedCalories.getAmount() == null) {
