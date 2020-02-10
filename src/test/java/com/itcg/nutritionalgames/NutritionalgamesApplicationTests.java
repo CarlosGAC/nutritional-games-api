@@ -8,6 +8,9 @@ class NutritionalgamesApplicationTests {
 
 	@Test
 	void contextLoads() {
+		//System.out.println("Context sloaded!");
+		//TestConfig config = new TestConfig();
+		//config.clean();
 	}
 
 }
