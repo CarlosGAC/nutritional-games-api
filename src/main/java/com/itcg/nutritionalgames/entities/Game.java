@@ -11,20 +11,27 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "food_subgroup")
-public class FoodSubgroup {
+@Table(name = "game")
+public class Game {
 
     @Id
-    @Column(name = "subgroup_id")
+    @Column(name = "game_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonProperty("subgroup_id")
+    @JsonProperty("game_id")
     @Setter
     @Getter
-    private Integer subgroupId;
+    private Integer gameId;
 
     @JsonProperty("name")
     @Column(name = "name")
     @Setter
     @Getter
     private String name;
+
+    @JsonProperty("max_score")
+    @Column(name = "max_score")
+    @Setter
+    @Getter
+    private Integer maxScore;
+
 }

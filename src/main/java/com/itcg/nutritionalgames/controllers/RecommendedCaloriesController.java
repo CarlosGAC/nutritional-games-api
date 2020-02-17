@@ -41,17 +41,4 @@ public class RecommendedCaloriesController {
 
         return foundRecommendedCalories;
     }
-
-    @PostMapping(value="/v1/recommendedCalories")
-    public RecommendedCalories saveRecommendedCalories(@RequestBody RecommendedCalories recommendedCalories) {
-
-        if(recommendedCalories.getAmount() == null) {
-            throw new BadRequestBodyException("The amount can't be null");
-        } else if(recommendedCalories.getAmount() <= 0) {
-            throw new BadRequestBodyException("The amount can't be negative or zero");
-        }
-
-        recommendedCaloriesService.saveRecommendedCalories(recommendedCalories);
-        return recommendedCalories;
-    }
 }

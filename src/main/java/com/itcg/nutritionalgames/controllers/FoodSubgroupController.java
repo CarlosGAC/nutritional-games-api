@@ -42,5 +42,4 @@ public class FoodSubgroupController {
         return foundFoodSubgroup;
     }
 
-
 }

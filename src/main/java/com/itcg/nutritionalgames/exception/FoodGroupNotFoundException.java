@@ -1,6 +1,5 @@
 package com.itcg.nutritionalgames.exception;
 
-import com.itcg.nutritionalgames.entities.FoodGroup;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 

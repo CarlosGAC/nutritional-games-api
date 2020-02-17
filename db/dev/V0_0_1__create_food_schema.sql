@@ -8,6 +8,7 @@ create table if not exists food
     calories smallint,
 
     subgroup_id int,
+    group_id int,
 
     PRIMARY KEY (food_id)
 ) ENGINE = InnoDB

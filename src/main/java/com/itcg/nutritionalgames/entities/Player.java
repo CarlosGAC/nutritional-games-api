@@ -17,7 +17,7 @@ public class Player {
     @Id
     @Column(name = "player_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonProperty("group_id")
+    @JsonProperty("player_id")
     @Setter
     @Getter
     private Integer playerId;
@@ -38,13 +38,13 @@ public class Player {
     @Column(name = "age")
     @Setter
     @Getter
-    private Integer age;
+    private Short age;
 
-    @JsonProperty("genre")
-    @Column(name = "genre")
+    @JsonProperty("gender")
+    @Column(name = "gender")
     @Setter
     @Getter
-    private String genre;
+    private String gender;
 
     @JsonProperty("recommended_calories_id")
     @Column(name = "recommended_calories_id")

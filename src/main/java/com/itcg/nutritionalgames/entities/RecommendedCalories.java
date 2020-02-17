@@ -20,12 +20,12 @@ public class RecommendedCalories {
     @JsonProperty("group_id")
     @Setter
     @Getter
-    private Integer groupId;
+    private Integer recommendedCaloriesId;
 
     @JsonProperty("amount")
     @Column(name = "amount")
     @Setter
     @Getter
-    private Integer amount;
+    private Short amount;
 
 }

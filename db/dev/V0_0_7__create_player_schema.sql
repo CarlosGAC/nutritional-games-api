@@ -5,7 +5,7 @@ create table if not exists player
     name varchar(50) not null,
     password varchar(50) not null,
     age smallint(2) not null,
-    genre ENUM('M', 'F') not null,
+    gender ENUM('M', 'F') not null,
 
     recommended_calories_id int,
 

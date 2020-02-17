@@ -1,5 +1,6 @@
 package com.itcg.nutritionalgames.entities;
 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,20 +12,18 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "food_subgroup")
-public class FoodSubgroup {
+@Table(name = "daily_portion")
+public class DailyPortion {
 
     @Id
-    @Column(name = "subgroup_id")
+    @Column(name = "daily_portion_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonProperty("subgroup_id")
+    @JsonProperty("daily_portion_id")
     @Setter
     @Getter
-    private Integer subgroupId;
+    private Integer dailyPortionId;
 
-    @JsonProperty("name")
-    @Column(name = "name")
-    @Setter
-    @Getter
-    private String name;
+    @Column(name = "amount")
+    @JsonProperty("amount")
+    private Short amount;
 }

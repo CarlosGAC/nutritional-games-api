@@ -42,7 +42,8 @@ public class FoodGroupController {
         return foundFoodGroup;
     }
 
-    @GetMapping(value = "/v1/foodGroups")
+    // TODO: Change it to show only one
+    /*@GetMapping(value = "/v1/foodGroups")
     public FoodGroup getFoodGroupByName(@RequestParam(value = "name") String name) {
 
         if (name.isEmpty()) {
@@ -53,19 +54,6 @@ public class FoodGroupController {
                 .orElseThrow(() -> new FoodGroupNotFoundException("No Food Group has been found with the group_id = " + name));
 
         return foundFoodGroup;
-    }
-
-    @PostMapping(value = "/v1/foodGroups")
-    public FoodGroup saveFoodGroup(@RequestBody FoodGroup foodGroup) {
-
-        if (foodGroup.getAmount() == null) {
-            throw new BadRequestBodyException("The amount can't be null");
-        } else if (foodGroup.getAmount() <= 0) {
-            throw new BadRequestBodyException("The amount can't be negative or zero");
-        }
-
-        foodGroupService.saveFoodGroup(foodGroup);
-        return foodGroup;
-    }
+    }*/
 
 }

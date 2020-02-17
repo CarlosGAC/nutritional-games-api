@@ -26,7 +26,7 @@ public class Food {
     @Column(name = "name")
     @Setter
     @Getter
-    private String foodName;
+    private String name;
 
     @JsonProperty("image")
     @Column(name = "image")
@@ -51,6 +51,12 @@ public class Food {
     @Setter
     @Getter
     private Short calories;
+
+    @JsonProperty("group_id")
+    @Column(name = "group_id")
+    @Setter
+    @Getter
+    private Integer groupId;
 
     @JsonProperty("subgroup_id")
     @Column(name = "subgroup_id")
