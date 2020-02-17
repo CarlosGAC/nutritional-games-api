@@ -22,8 +22,4 @@ public class RecommendedCaloriesService {
         return recommendedCaloriesRepository.findAll();
     }
 
-    public void saveRecommendedCalories(RecommendedCalories recommendedCalories) {
-        recommendedCaloriesRepository.save(recommendedCalories);
-    }
-
 }

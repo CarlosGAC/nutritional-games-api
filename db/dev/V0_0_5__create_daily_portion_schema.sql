@@ -5,7 +5,7 @@ create table if not exists daily_portion
     amount smallint,
 
     recommended_calories_id int,
-    pbc_group_id_ int,
+    pbc_group_id int,
 
     PRIMARY KEY (daily_portion_id)
 ) ENGINE = InnoDB

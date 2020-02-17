@@ -2,6 +2,7 @@ package com.itcg.nutritionalgames.services;
 
 import com.itcg.nutritionalgames.entities.FoodGroup;
 import com.itcg.nutritionalgames.entities.FoodSubgroup;
+import com.itcg.nutritionalgames.exception.EntityNotFoundException;
 import com.itcg.nutritionalgames.repositories.FoodGroupRepository;
 import com.itcg.nutritionalgames.repositories.FoodSubgroupRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,12 +21,9 @@ public class FoodSubgroupService {
         return foodSubgroupRepository.findAll();
     }
 
-    public Optional<FoodSubgroup> findFoodGroupByFoodGroupId(Integer foodGroupId) {
-        return foodSubgroupRepository.findById(foodGroupId);
-    }
-
-    public Optional<FoodSubgroup> findFoodSubgroupBySubgroupId(Integer foodSubgroupId) {
-        return foodSubgroupRepository.findById(foodSubgroupId);
+    public FoodSubgroup findFoodSubgroupBySubgroupId(Integer foodSubgroupId) {
+        return foodSubgroupRepository.findById(foodSubgroupId)
+                .orElseThrow(() -> new EntityNotFoundException("No food subgroup could be found with id = " + foodSubgroupId));
     }
 
 }

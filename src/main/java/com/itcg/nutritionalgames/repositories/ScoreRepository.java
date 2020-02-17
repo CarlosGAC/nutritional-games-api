@@ -12,6 +12,6 @@ import java.util.Optional;
 public interface ScoreRepository extends JpaRepository<Score, Integer> {
     List<Score> findAll();
     List<Score> findByDate(Date date);
-    Optional<Score> findByGameId(Integer gameId);
-    Optional<Score> findByPlayerId(Integer playerId);
+    List<Score> findByGameId(Integer gameId);
+    List<Score> findByPlayerId(Integer playerId);
 }

@@ -2,7 +2,6 @@ package com.itcg.nutritionalgames.controllers;
 
 import com.itcg.nutritionalgames.entities.RecommendedCalories;
 import com.itcg.nutritionalgames.exception.BadRequestBodyException;
-import com.itcg.nutritionalgames.exception.RecommendedCaloriesNotFoundException;
 import com.itcg.nutritionalgames.services.RecommendedCaloriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,13 +23,7 @@ public class RecommendedCaloriesController {
     public List<RecommendedCalories> getAllRecommendedCalories(){
 
         List<RecommendedCalories> response = recommendedCaloriesService.findAllRecommendedCalories();
-
-        if(response.isEmpty()) {
-            throw new RecommendedCaloriesNotFoundException();
-        } else {
-            return response;
-        }
-
+        return response;
     }
 
     @GetMapping(value="/v1/recommendedCalories/{recommended_calories_id}")

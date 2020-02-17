@@ -2,6 +2,7 @@ package com.itcg.nutritionalgames.services;
 
 import com.itcg.nutritionalgames.entities.FoodGroup;
 import com.itcg.nutritionalgames.entities.RecommendedCalories;
+import com.itcg.nutritionalgames.exception.EntityNotFoundException;
 import com.itcg.nutritionalgames.repositories.FoodGroupRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,12 +16,14 @@ public class FoodGroupService {
 
     private final FoodGroupRepository foodGroupRepository;
 
-    public Optional<FoodGroup> findFoodGroupByGroupId(Integer groupId) {
-        return foodGroupRepository.findById(groupId);
+    public FoodGroup findFoodGroupByGroupId(Integer groupId) {
+        return foodGroupRepository.findById(groupId)
+                .orElseThrow(() -> new EntityNotFoundException("No food group could be found with group_id = " + groupId));
     }
 
-    public Optional<FoodGroup> findFoodGroupByName(String name) {
-        return foodGroupRepository.findByName(name);
+    public FoodGroup findFoodGroupByName(String name) {
+        return foodGroupRepository.findByName(name)
+                .orElseThrow(() -> new EntityNotFoundException("No food group could be found with name = " + name));
     }
 
     public List<FoodGroup> findAllFoodGroups() {

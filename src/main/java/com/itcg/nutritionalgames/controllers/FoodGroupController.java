@@ -3,7 +3,6 @@ package com.itcg.nutritionalgames.controllers;
 import com.itcg.nutritionalgames.entities.FoodGroup;
 import com.itcg.nutritionalgames.exception.BadRequestBodyException;
 import com.itcg.nutritionalgames.exception.BadRequestParamException;
-import com.itcg.nutritionalgames.exception.FoodGroupNotFoundException;
 import com.itcg.nutritionalgames.services.FoodGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,10 +24,6 @@ public class FoodGroupController {
 
         List<FoodGroup> response = foodGroupService.findAllFoodGroups();
 
-        if (response.isEmpty()) {
-            throw new FoodGroupNotFoundException();
-        }
-
         return response;
 
     }
@@ -36,8 +31,7 @@ public class FoodGroupController {
     @GetMapping(value = "/v1/foodGroups/{food_group_id}")
     public FoodGroup getFoodGroupById(@PathVariable(name = "food_group_id") Integer foodGroupId) {
 
-        FoodGroup foundFoodGroup = foodGroupService.findFoodGroupByGroupId(foodGroupId)
-                .orElseThrow(() -> new FoodGroupNotFoundException(foodGroupId));
+        FoodGroup foundFoodGroup = foodGroupService.findFoodGroupByGroupId(foodGroupId);
 
         return foundFoodGroup;
     }
