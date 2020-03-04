@@ -16,7 +16,7 @@ public class Food {
 
     @Id
     @Column(name = "food_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("food_id")
     @Setter
     @Getter

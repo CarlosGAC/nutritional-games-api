@@ -15,6 +15,10 @@ public class PlayerService {
 
     private final PlayerRepository playerRepository;
 
+    public Player saveNewPlayer(Player newPlayer) {
+        return playerRepository.save(newPlayer);
+    }
+
     public List<Player> findAllPlayers() {
         List<Player> playersList = playerRepository.findAll();
 

@@ -12,5 +12,5 @@ public interface DailyPortionRepository extends JpaRepository<DailyPortion, Inte
 
     List<DailyPortion> findAll();
     List<DailyPortion> findByAmount(Short amount);
-
+    List<DailyPortion> findByPbcGroupId(Integer pbcGroupId);
 }

@@ -3,9 +3,7 @@ package com.itcg.nutritionalgames.controllers;
 import com.itcg.nutritionalgames.entities.Score;
 import com.itcg.nutritionalgames.services.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -23,6 +21,11 @@ public class ScoreController {
     @GetMapping("v1/scores")
     public List<Score> findAllScores() {
         return scoreService.findAllScores();
+    }
+
+    @PostMapping("v1/scores")
+    public Score saveNewScore(@RequestBody Score newScore) {
+        return scoreService.saveNewScore(newScore);
     }
 
     @GetMapping(value = "v1/scores", params = "date")

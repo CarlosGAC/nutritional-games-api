@@ -1,9 +1,12 @@
 package com.itcg.nutritionalgames.services;
 
+import com.itcg.nutritionalgames.entities.Food;
 import com.itcg.nutritionalgames.entities.FoodGroup;
 import com.itcg.nutritionalgames.entities.RecommendedCalories;
 import com.itcg.nutritionalgames.exception.EntityNotFoundException;
 import com.itcg.nutritionalgames.repositories.FoodGroupRepository;
+import com.itcg.nutritionalgames.repositories.FoodRepository;
+import com.itcg.nutritionalgames.repositories.PbcGroupRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,8 @@ import java.util.Optional;
 public class FoodGroupService {
 
     private final FoodGroupRepository foodGroupRepository;
+    private final FoodRepository foodRepository;
+    private final PbcGroupRepository pbcGroupRepository;
 
     public FoodGroup findFoodGroupByGroupId(Integer groupId) {
         return foodGroupRepository.findById(groupId)
@@ -39,4 +44,15 @@ public class FoodGroupService {
         foodGroupRepository.save(foodGroup);
     }
 
+    public List<FoodGroup> findByPbcGroupId(Integer pbcGroupId) {
+        pbcGroupRepository.findById(pbcGroupId)
+                .orElseThrow(() -> new EntityNotFoundException("No food group could be found with pbc_group_id = " + pbcGroupId));
+
+        List<FoodGroup> foodList = foodGroupRepository.findByPbcGroupId(pbcGroupId);
+
+        if(foodList.isEmpty()) {
+            throw new EntityNotFoundException("No food group could be found with pbc_group_id = " + pbcGroupId);
+        }
+        return foodList;
+    }
 }

@@ -16,7 +16,7 @@ public class Player {
 
     @Id
     @Column(name = "player_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("player_id")
     @Setter
     @Getter

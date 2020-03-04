@@ -28,14 +28,11 @@ VALUES	(1, 'Rojo'),
           (6, 'Amarillo'),
           (7, 'Gris');
 
-
-
 INSERT INTO recommended_calories (recommended_calories_id, amount)
 VALUES	(1, 1500),
           (2, 1600),
           (3, 1700),
           (4, 1800);
-
 
 INSERT INTO daily_portion (daily_portion_id, recommended_calories_id, pbc_group_id, amount)
 VALUES	(1, 1, 1, 2),
@@ -117,7 +114,7 @@ VALUES	(1, 'Sandia', 'Taza', 1, 48, 1, 1),
           (23, 'Papas a la francesa', 'Pieza', 4, 112, 4, 6),
           (24, 'Frijoles', 'Taza', 0.5, 114, 5, 1),
           (25, 'Leche', 'Taza', 1, 148, 6, 1),
-          (26, 'Yogurth','Taza', 1, 139, 6, 1),
+          (26, 'Yogurt','Taza', 1, 139, 6, 1),
           (27, 'Queso fresco/panela', 'Palma de la mano', 1, 58, 7, 1),
           (28, 'Pescado', 'Palma de la mano', 1, 148, 8, 1),
           (29, 'Pollo', 'Palma de la mano', 1, 166, 9, 1),

@@ -2,6 +2,7 @@ package com.itcg.nutritionalgames.services;
 
 import com.itcg.nutritionalgames.entities.Food;
 import com.itcg.nutritionalgames.exception.EntityNotFoundException;
+import com.itcg.nutritionalgames.repositories.FoodGroupRepository;
 import com.itcg.nutritionalgames.repositories.FoodRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.List;
 public class FoodService {
 
     private final FoodRepository foodRepository;
+    private final FoodGroupRepository foodGroupRepository;
 
     public List<Food> findAllFood() {
         List<Food> foodList = foodRepository.findAll();
@@ -57,6 +59,30 @@ public class FoodService {
 
         if(foodList.isEmpty()) {
             throw new EntityNotFoundException("No food could be found with calories = " + calories);
+        }
+        return foodList;
+    }
+
+    public List<Food> findFoodByFoodGroupId(Integer foodGroupId) {
+        foodGroupRepository.findById(foodGroupId)
+                .orElseThrow(() -> new EntityNotFoundException("No food group could be found with group_id = " + foodGroupId));
+
+        List<Food> foodList = foodRepository.findByGroupId(foodGroupId);
+
+        if(foodList.isEmpty()) {
+            throw new EntityNotFoundException("No food could be found with group_id = " + foodGroupId);
+        }
+        return foodList;
+    }
+
+    public List<Food> findFoodByFoodSubgroupId(Integer foodSubgroupId) {
+        foodGroupRepository.findById(foodSubgroupId)
+                .orElseThrow(() -> new EntityNotFoundException("No food subgroup could be found with subgroup_id = " + foodSubgroupId));
+
+        List<Food> foodList = foodRepository.findBySubgroupId(foodSubgroupId);
+
+        if(foodList.isEmpty()) {
+            throw new EntityNotFoundException("No food could be found with subgroup_id = " + foodSubgroupId);
         }
         return foodList;
     }

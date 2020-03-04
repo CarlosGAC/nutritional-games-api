@@ -14,4 +14,6 @@ public interface FoodRepository extends JpaRepository<Food, Integer> {
     List<Food> findByMeasure(String measure);
     List<Food> findByPortionAmount(short portionAmount);
     List<Food> findByCalories(short calories);
+    List<Food> findByGroupId(int foodGroupId);
+    List<Food> findBySubgroupId(int foodSubgroupId);
 }

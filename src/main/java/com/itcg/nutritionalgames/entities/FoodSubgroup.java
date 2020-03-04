@@ -16,7 +16,7 @@ public class FoodSubgroup {
 
     @Id
     @Column(name = "subgroup_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("subgroup_id")
     @Setter
     @Getter

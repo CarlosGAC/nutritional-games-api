@@ -16,7 +16,7 @@ public class Game {
 
     @Id
     @Column(name = "game_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("game_id")
     @Setter
     @Getter

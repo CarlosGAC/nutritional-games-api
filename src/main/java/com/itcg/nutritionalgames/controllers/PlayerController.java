@@ -1,13 +1,12 @@
 package com.itcg.nutritionalgames.controllers;
 
 import com.itcg.nutritionalgames.entities.Player;
+import com.itcg.nutritionalgames.entities.Score;
 import com.itcg.nutritionalgames.services.PlayerService;
+import com.itcg.nutritionalgames.services.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +15,12 @@ import java.util.List;
 public class PlayerController {
 
     private final PlayerService playerService;
+    private final ScoreService scoreService;
 
     @Autowired
-    public PlayerController(PlayerService playerService) {
+    public PlayerController(PlayerService playerService, ScoreService scoreService) {
         this.playerService = playerService;
+        this.scoreService = scoreService;
     }
 
     @GetMapping(value = "v1/players")
@@ -27,9 +28,19 @@ public class PlayerController {
         return playerService.findAllPlayers();
     }
 
-    @GetMapping(value = "v1/players/{player_id}", params="player_id")
+    @PostMapping(value = "v1/players")
+    public Player savePlayer(@RequestBody Player player) {
+        return playerService.saveNewPlayer(player);
+    }
+
+    @GetMapping(value = "v1/players/{player_id}")
     public Player findPlayerById(@PathVariable(value = "player_id") Integer playerId) {
         return playerService.findById(playerId);
+    }
+
+    @GetMapping(value = "v1/players/{player_id}/scores", params="player_id")
+    public List<Score> findScoresPlayerById(@PathVariable(value = "player_id") Integer playerId) {
+        return scoreService.findScoreByPlayerId(playerId);
     }
 
     @GetMapping(value = "v1/players", params="gender")

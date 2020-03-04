@@ -13,5 +13,6 @@ public interface FoodGroupRepository extends JpaRepository<FoodGroup, Integer> {
     Optional<FoodGroup> findByName(String name);
 
     List<FoodGroup> findAll();
+    List<FoodGroup> findByPbcGroupId(Integer pbcGroupId);
 
 }

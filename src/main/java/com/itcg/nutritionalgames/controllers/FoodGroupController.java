@@ -1,7 +1,9 @@
 package com.itcg.nutritionalgames.controllers;
 
+import com.itcg.nutritionalgames.entities.Food;
 import com.itcg.nutritionalgames.entities.FoodGroup;
 import com.itcg.nutritionalgames.services.FoodGroupService;
+import com.itcg.nutritionalgames.services.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +14,13 @@ import java.util.List;
 public class FoodGroupController {
 
     @Autowired
-    public FoodGroupController(FoodGroupService foodGroupService) {
+    public FoodGroupController(FoodGroupService foodGroupService, FoodService foodService) {
         this.foodGroupService = foodGroupService;
+        this.foodService = foodService;
     }
 
     private final FoodGroupService foodGroupService;
+    private final FoodService foodService;
 
     @GetMapping(value = "v1/foodGroups")
     public List<FoodGroup> getAllFoodGroups() {
@@ -38,6 +42,14 @@ public class FoodGroupController {
         FoodGroup foundFoodGroup = foodGroupService.findFoodGroupByGroupId(foodGroupId);
 
         return foundFoodGroup;
+    }
+
+    @GetMapping(value = "v1/foodGroups/{food_group_id}/food")
+    public List<Food> getFoodByFoodGroupId(@PathVariable(name = "food_group_id") Integer foodGroupId) {
+
+        List<Food> foundFood = foodService.findFoodByFoodGroupId(foodGroupId);
+
+        return foundFood;
     }
 
 }

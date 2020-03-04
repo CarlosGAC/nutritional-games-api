@@ -8,6 +8,7 @@ import com.itcg.nutritionalgames.exception.EntityNotFoundException;
 import com.itcg.nutritionalgames.repositories.DailyPortionRepository;
 import com.itcg.nutritionalgames.repositories.FoodGroupRepository;
 import com.itcg.nutritionalgames.repositories.FoodSubgroupRepository;
+import com.itcg.nutritionalgames.repositories.PbcGroupRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class DailyPortionService {
     private final DailyPortionRepository dailyPortionRepository;
+    private final PbcGroupRepository pbcGroupRepository;
 
     public List<DailyPortion> findAllDailyPortions() {
         List<DailyPortion> dailyPortionsList = dailyPortionRepository.findAll();
@@ -39,6 +41,19 @@ public class DailyPortionService {
     public DailyPortion findById(Integer dailyPortionId) {
         return dailyPortionRepository.findById(dailyPortionId)
                 .orElseThrow(() -> new EntityNotFoundException("No daily portion could be found with daily_portion_id = " + dailyPortionId));
+    }
+
+    public List<DailyPortion> findByPbcGroupId(Integer pbcGroupId) {
+        pbcGroupRepository.findById(pbcGroupId)
+                .orElseThrow(() -> new EntityNotFoundException("No pbc group could be found with pbc_group_id = " + pbcGroupId));
+
+        List<DailyPortion> dailyPortionList = dailyPortionRepository.findByPbcGroupId(pbcGroupId);
+
+        if(dailyPortionList.isEmpty()) {
+            throw new EntityNotFoundException("No daily portion could be found with pbc_group_id = " + pbcGroupId);
+        }
+
+        return dailyPortionList;
     }
 
 }

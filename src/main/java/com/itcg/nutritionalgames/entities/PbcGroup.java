@@ -17,7 +17,7 @@ public class PbcGroup {
 
     @Id
     @Column(name = "pbc_group_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("pbc_group_id")
     @Setter
     @Getter

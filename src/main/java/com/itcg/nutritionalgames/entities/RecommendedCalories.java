@@ -16,7 +16,7 @@ public class RecommendedCalories {
 
     @Id
     @Column(name = "recommended_calories_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("group_id")
     @Setter
     @Getter
