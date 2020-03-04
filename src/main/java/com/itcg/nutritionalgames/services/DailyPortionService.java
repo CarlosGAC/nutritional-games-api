@@ -20,12 +20,25 @@ public class DailyPortionService {
     private final DailyPortionRepository dailyPortionRepository;
 
     public List<DailyPortion> findAllDailyPortions() {
-        return dailyPortionRepository.findAll();
+        List<DailyPortion> dailyPortionsList = dailyPortionRepository.findAll();
+
+        if(dailyPortionsList.isEmpty()) {
+            throw new EntityNotFoundException("No daily portions could be found at the database") ;
+        }
+        return dailyPortionsList;
     }
 
-    public DailyPortion findByAmount(Short amount) {
-        return dailyPortionRepository.findByAmount(amount)
-                .orElseThrow(() -> new EntityNotFoundException("No daily portion could be found with amount = " + amount));
+    public List<DailyPortion> findByAmount(Short amount) {
+        List<DailyPortion> response = dailyPortionRepository.findByAmount(amount);
+        if(response.isEmpty()) {
+            throw new EntityNotFoundException("No daily portions could be found with amount = " + amount);
+        }
+        return response;
+    }
+
+    public DailyPortion findById(Integer dailyPortionId) {
+        return dailyPortionRepository.findById(dailyPortionId)
+                .orElseThrow(() -> new EntityNotFoundException("No daily portion could be found with daily_portion_id = " + dailyPortionId));
     }
 
 }

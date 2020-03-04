@@ -18,12 +18,21 @@ public class FoodSubgroupService {
     private final FoodSubgroupRepository foodSubgroupRepository;
 
     public List<FoodSubgroup> findAllFoodSubgroups() {
-        return foodSubgroupRepository.findAll();
+        List<FoodSubgroup> foodSubgroupList = foodSubgroupRepository.findAll();
+        if(foodSubgroupList.isEmpty()) {
+            throw new EntityNotFoundException("No food subgroups could be found at the database");
+        }
+        return foodSubgroupList;
     }
 
     public FoodSubgroup findFoodSubgroupBySubgroupId(Integer foodSubgroupId) {
         return foodSubgroupRepository.findById(foodSubgroupId)
                 .orElseThrow(() -> new EntityNotFoundException("No food subgroup could be found with id = " + foodSubgroupId));
+    }
+
+    public FoodSubgroup findFoodSubgroupByName(String name) {
+        return foodSubgroupRepository.findFoodSubgroupByName(name)
+                .orElseThrow(() -> new EntityNotFoundException("No food subgroup could be found with name = " + name));
     }
 
 }

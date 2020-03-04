@@ -28,16 +28,4 @@ public class FoodGroup {
     @Getter
     private String name;
 
-    @JsonProperty("daily_portion_amount")
-    @Column(name = "daily_portion_amount")
-    @Setter
-    @Getter
-    private Integer amount;
-
-    @JsonProperty("recommended_calories_id")
-    @Column(name = "recommended_calories_id")
-    @Setter
-    @Getter
-    private Integer recommendedCaloriesId;
-
 }

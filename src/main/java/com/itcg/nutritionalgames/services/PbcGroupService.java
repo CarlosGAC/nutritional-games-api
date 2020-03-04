@@ -20,7 +20,11 @@ public class PbcGroupService {
     private final PbcGroupRepository pbcGroupRepository;
 
     public List<PbcGroup> findAllPbcGroups() {
-        return pbcGroupRepository.findAll();
+        List<PbcGroup> pbcGroupList = pbcGroupRepository.findAll();
+        if(pbcGroupList.isEmpty()) {
+            throw new EntityNotFoundException("No pbc groups could be found at the database");
+        }
+        return pbcGroupList;
     }
 
     public PbcGroup findByName(String name) {

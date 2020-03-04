@@ -11,6 +11,6 @@ import java.util.Optional;
 public interface DailyPortionRepository extends JpaRepository<DailyPortion, Integer> {
 
     List<DailyPortion> findAll();
-    Optional<DailyPortion> findByAmount(Short amount);
+    List<DailyPortion> findByAmount(Short amount);
 
 }

@@ -11,7 +11,14 @@ import java.util.Optional;
 public interface PlayerRepository extends JpaRepository<Player, Integer> {
 
     List<Player> findAll();
-    Optional<Player> findByName(String name);
-    Optional<Player> findByGender(String gender);
+
+    List<Player> findByName(String name);
+    List<Player> findByGender(String gender);
     List<Player> findByAge(Short age);
+
+    List<Player> findByNameAndGender(String name, String gender);
+    List<Player> findByNameAndAge(String name, Short age);
+    List<Player> findByGenderAndAge(String gender, Short age);
+
+    List<Player> findByNameAndGenderAndAge(String name, String gender, Short age);
 }

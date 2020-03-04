@@ -19,19 +19,13 @@ public class RecommendedCaloriesController {
 
     private final RecommendedCaloriesService recommendedCaloriesService;
 
-    @GetMapping(value="/v1/recommended_Calories")
-    public List<RecommendedCalories> getAllRecommendedCalories(){
-
-        List<RecommendedCalories> response = recommendedCaloriesService.findAllRecommendedCalories();
-        return response;
+    @GetMapping(value="/v1/recommendedCalories")
+    public List<RecommendedCalories> findAllRecommendedCalories(){
+        return recommendedCaloriesService.findAllRecommendedCalories();
     }
 
     @GetMapping(value="/v1/recommendedCalories/{recommended_calories_id}")
-    public RecommendedCalories getRecommendedCaloriesById(@PathVariable(name = "recommended_calories_id") Integer recommendedCaloriesId) {
-
-        RecommendedCalories foundRecommendedCalories = recommendedCaloriesService.findRecommendedCaloriesById(recommendedCaloriesId)
-                .orElseThrow(() -> new RuntimeException("The API couldn't find a record with recommended_calories_id = " + recommendedCaloriesId));
-
-        return foundRecommendedCalories;
+    public RecommendedCalories findRecommendedCaloriesById(@PathVariable(name = "recommended_calories_id") Integer recommendedCaloriesId) {
+        return recommendedCaloriesService.findRecommendedCaloriesById(recommendedCaloriesId);
     }
 }

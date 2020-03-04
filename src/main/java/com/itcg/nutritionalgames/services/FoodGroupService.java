@@ -27,7 +27,12 @@ public class FoodGroupService {
     }
 
     public List<FoodGroup> findAllFoodGroups() {
-        return foodGroupRepository.findAll();
+        List<FoodGroup> foodGroupsList = foodGroupRepository.findAll();
+
+        if(foodGroupsList.isEmpty()) {
+            throw new EntityNotFoundException("No food groups could be found at the  database");
+        }
+        return foodGroupsList;
     }
 
     public void saveFoodGroup(FoodGroup foodGroup) {
