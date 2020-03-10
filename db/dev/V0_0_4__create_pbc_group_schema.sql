@@ -5,5 +5,5 @@ create table if not exists pbc_group
 
     PRIMARY KEY (pbc_group_id)
 ) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_general_ci;
