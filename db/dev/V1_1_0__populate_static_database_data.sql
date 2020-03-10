@@ -92,7 +92,7 @@ INSERT INTO food(food_id, name, measure, portion_amount, calories, group_id, sub
 VALUES	(1, 'Sandia', 'Taza', 1, 48, 1, 1),
           (2, 'Fresa', 'Pieza', 17, 65, 1, 1),
           (3, 'Naranja', 'Pieza', 2, 72, 1, 2),
-          (4, 'PiÒa', 'Taza', 0.75, 62, 1, 2),
+          (4, 'Piña', 'Taza', 0.75, 62, 1, 2),
           (5, 'Limon', 'Pieza', 4, 31, 1, 3),
           (6, 'Uva', 'Pieza', 18, 61, 1, 4),
           (7, 'Platano', 'Pieza', 0.5, 48, 1, 5),
