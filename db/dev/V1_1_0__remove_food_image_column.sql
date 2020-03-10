@@ -1,0 +1,1 @@
+alter table food DROP image;

@@ -19,7 +19,7 @@ public class Score {
     @Id
     @Column(name = "score_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty("group_id")
+    @JsonProperty("score_id")
     @Setter
     @Getter
     private Integer scoreId;
